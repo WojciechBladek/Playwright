@@ -5,13 +5,11 @@ import { Page } from '@playwright/test';
 export class LoginPage extends BasePage {
   url = '/my-account';
 
-  userEmailInput = this.page.getByLabel('Username or email address *');
+  userEmailInput = this.page.locator('#username');
   userPasswordInput = this.page.locator('#password');
   loginButton = this.page.getByRole('button', { name: 'Login' });
-  welcomeText = this.page
-    .locator('#post-8 > div.woocommerce > div > p')
-    .first();
-  loginError = this.page.locator('#post-8 > div.woocommerce > ul');
+  welcomeText = this.page.locator('[class="woocommerce-MyAccount-content"]');
+  loginError = this.page.locator('[class="woocommerce-error"]');
 
   constructor(page: Page) {
     super(page);
