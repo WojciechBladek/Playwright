@@ -2,7 +2,7 @@
 
 ## GEN Shop Application
 
-Repository: https://github.com/WojciechBladek/WojciechBladek/tree/main/Playwright
+Repository: https://github.com/WojciechBladek/Playwright
 
 Follow instructions in app README
 
