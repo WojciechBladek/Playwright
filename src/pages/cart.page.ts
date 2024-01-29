@@ -25,7 +25,9 @@ export class CartPage extends BasePage {
   }
 
   productLocator(productName: string): Locator {
-    return this.page.getByText(productName, { exact: true });
+    return this.page.getByRole('link', {
+      name: `${productName.replace('–', '-')}`,
+    });
   }
 
   async clickButtonProceedToCheckout(): Promise<CheckoutPage> {

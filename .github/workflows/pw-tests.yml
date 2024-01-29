@@ -49,7 +49,7 @@ jobs:
       - name: Create auth files for gmail tester
         run: |
           echo "${{ secrets.TOKEN }}" > token.json
-      #     echo "${{ secrets.CREDENTIALS }}" > credentials.json
+          echo "${{ secrets.CREDENTIALS }}" > credentials.json
       - name: decode and save
         run: |
           echo "${{ secrets.ENV }}" > .env
