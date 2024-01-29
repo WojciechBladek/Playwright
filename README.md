@@ -20,8 +20,15 @@ Follow instructions in app README
 - install dependencies: `npm install`
 - setup Playwright with: `npx playwright install --with-deps chromium`
 - setup husky with: `npx husky install`
-- prepare local env file: `cp .env-template .env`
-- copy application main URL as value of `BASE_URL` variable in `.env` file
+- prepare local env file: `.env`
+- .env file variables example:
+```
+BASE_URL='https://skleptest.pl/'
+USER_EMAIL='email.adress@test.com'
+USER_PASSWORD='password'
+USER_NAME= 'email.adress'
+```
+- go to base url and then create an account with your data and substitute it into the variables in .env
 
 ### Update framework
 

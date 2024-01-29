@@ -5,15 +5,15 @@ import { Locator, Page } from '@playwright/test';
 export class CartPage extends BasePage {
   url = '/cart/';
 
-  incrementProductValue = this.page.getByRole('link', { name: '' });
+  incrementProductValue = this.page.locator('[class="arrow-up incrementor"]');
   updateCartButton = this.page.getByRole('button', { name: 'Update cart' });
   quantityValueLocator = this.page.getByLabel('Quantity');
 
-  cartUpdatedText = this.page.getByText('Cart updated.');
-  proceedToCheckoutButton = this.page.getByRole('link', {
-    name: 'Proceed to checkout',
-  });
-  cartIsEmpty = this.page.getByText('Your cart is currently empty.');
+  cartUpdatedText = this.page.locator('[class="woocommerce-message"]');
+  proceedToCheckoutButton = this.page.locator(
+    '[class="wc-proceed-to-checkout"]',
+  );
+  cartIsEmpty = this.page.locator('[class="cart-empty"]');
 
   constructor(page: Page) {
     super(page);
@@ -25,7 +25,7 @@ export class CartPage extends BasePage {
   }
 
   productLocator(productName: string): Locator {
-    return this.page.getByText(productName);
+    return this.page.getByText(productName, { exact: true });
   }
 
   async clickButtonProceedToCheckout(): Promise<CheckoutPage> {

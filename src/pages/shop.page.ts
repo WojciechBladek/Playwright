@@ -7,16 +7,10 @@ export class ShopPage extends BasePage {
   url = '/shop/';
   cartPage = new CartPage(this.page);
 
-  productName = this.page.locator(
-    '#post-6 > div.woocommerce > form > table > tbody > tr.woocommerce-cart-form__cart-item.cart_item > td.product-name',
-  );
-  myCartButton = this.page.locator(
-    '#page > header.top-header-bar-container > div > div > div > ul > li.top-cart',
-  );
+  myCartButton = this.page.locator('[class="top-cart"]');
   productsList = this.page
     .getByRole('listitem')
-    .locator('a > h2')
-    .filter({ hasNot: this.page.locator('> mark') });
+    .locator('[class="woocommerce-loop-product__title"]');
 
   constructor(page: Page) {
     super(page);
@@ -26,7 +20,8 @@ export class ShopPage extends BasePage {
     await this.page
       .getByRole('listitem')
       .filter({ hasText: `${productName}` })
-      .getByRole('link', { name: ' Add to cart' })
+      .getByRole('link')
+      .nth(1)
       .click();
   }
 

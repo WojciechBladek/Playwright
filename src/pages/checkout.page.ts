@@ -18,29 +18,40 @@ export class CheckoutPage extends BasePage {
     .getByRole('combobox');
 
   placeOrderButton = this.page.locator('#place_order');
-  errorMessage = this.page.locator(
-    '#post-7 > div.woocommerce > form.checkout.woocommerce-checkout > div.woocommerce-NoticeGroup.woocommerce-NoticeGroup-checkout > div',
-  );
+  errorMessage = this.page.locator('[class="woocommerce-error"]');
 
   constructor(page: Page) {
     super(page);
   }
 
   async fillOutTheForm(userFormData: UserCheckoutDataModel): Promise<void> {
-    await this.userFirstName.type(userFormData.userFirstName, { delay: 50 });
-    await this.userLastName.type(userFormData.userLastName, { delay: 50 });
+    await this.userFirstName.pressSequentially(userFormData.userFirstName, {
+      delay: 50,
+    });
+    await this.userLastName.pressSequentially(userFormData.userLastName, {
+      delay: 50,
+    });
     await this.userCountry.click();
     await this.page
       .getByRole('option', { name: 'United States (US)', exact: true })
       .click();
-    await this.userPostCode.type(userFormData.userPostCode, { delay: 50 });
-    await this.userTownCity.type(userFormData.userTownCity, { delay: 50 });
-    await this.userCountryState.click();
-    await this.page.getByRole('option', { name: 'Washington' }).click();
-    await this.userStreetAddress.type(userFormData.userStreetAddress, {
+    await this.userPostCode.pressSequentially(userFormData.userPostCode, {
       delay: 50,
     });
-    await this.userPhone.type(userFormData.userPhone, { delay: 100 });
+    await this.userTownCity.pressSequentially(userFormData.userTownCity, {
+      delay: 50,
+    });
+    await this.userCountryState.click();
+    await this.page.getByRole('option', { name: 'Washington' }).click();
+    await this.userStreetAddress.pressSequentially(
+      userFormData.userStreetAddress,
+      {
+        delay: 50,
+      },
+    );
+    await this.userPhone.pressSequentially(userFormData.userPhone, {
+      delay: 100,
+    });
     await this.userPhone.blur();
   }
 

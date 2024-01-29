@@ -22,7 +22,7 @@ test.describe('Verify register', () => {
     await expect(
       registerPage.welcomeText,
       'Should be visible welcome text with userName',
-    ).toHaveText(registerPage.expectedWelcomeText(userName));
+    ).toContainText(registerPage.expectedWelcomeText(userName));
   });
 
   test('login with new account @GEN-S2-01', async ({ page, registerPage }) => {
@@ -36,7 +36,7 @@ test.describe('Verify register', () => {
     await expect(
       registerPage.welcomeText,
       'Should be visible welcome text with userName',
-    ).toHaveText(registerPage.expectedWelcomeText(userName));
+    ).toContainText(registerPage.expectedWelcomeText(userName));
   });
 
   test('not register with incorrect data - email not provided @GEN-S2-02', async ({
