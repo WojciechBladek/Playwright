@@ -43,6 +43,7 @@ test.describe('Verify shop', () => {
     await checkoutPage.fillOutTheForm(randomUserFormData);
     const orderPage = await checkoutPage.clickPlaceOrderButton();
 
+    // eslint-disable-next-line playwright/no-conditional-in-test
     if (await checkoutPage.errorMessage.isVisible()) {
       await checkoutPage.placeOrderButton.click({ delay: 2000 });
     }

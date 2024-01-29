@@ -4,8 +4,9 @@ import { Page } from '@playwright/test';
 export class OrderReceivedPage extends BasePage {
   url = 'checkout/order-received/';
 
-  orderReceivedText = this.page.locator('#post-7 > div.woocommerce > div > p');
-
+  orderReceivedText = this.page.getByText(
+    'Thank you. Your order has been received.',
+  );
   constructor(page: Page) {
     super(page);
   }

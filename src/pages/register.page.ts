@@ -5,16 +5,12 @@ import { Page } from '@playwright/test';
 export class RegisterPage extends BasePage {
   url = '/my-account';
 
-  userEmailInput = this.page.getByLabel('Email address *', { exact: true });
+  userEmailInput = this.page.locator('#reg_email');
   userPasswordInput = this.page.locator('#reg_password');
   registerButton = this.page.getByRole('button', { name: 'Register' });
 
-  welcomeText = this.page
-    .locator('#post-8 > div.woocommerce > div > p')
-    .first();
-  emailErrorText = this.page.getByText(
-    'Error: Please provide a valid email address.',
-  );
+  welcomeText = this.page.locator('[class="woocommerce-MyAccount-content"]');
+  emailErrorText = this.page.locator('[class="woocommerce-error"]');
 
   constructor(page: Page) {
     super(page);
@@ -22,9 +18,12 @@ export class RegisterPage extends BasePage {
 
   async registerNewUser(registerUserData: RegisterUserModel): Promise<void> {
     await this.userEmailInput.fill(registerUserData.userEmail);
-    await this.userPasswordInput.type(registerUserData.userPassword, {
-      delay: 50,
-    });
+    await this.userPasswordInput.pressSequentially(
+      registerUserData.userPassword,
+      {
+        delay: 50,
+      },
+    );
     await this.registerButton.click();
   }
 

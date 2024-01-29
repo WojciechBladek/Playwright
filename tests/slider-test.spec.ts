@@ -34,6 +34,7 @@ test('Testing slider', async ({ page }) => {
   // console.log('Pixels to move', pixelsToMove);
 
   await pointer.dragTo(pointer, {
+    // eslint-disable-next-line playwright/no-force-option
     force: true,
     targetPosition: {
       x: pixelsToMove,
