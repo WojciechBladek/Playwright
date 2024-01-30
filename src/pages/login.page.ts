@@ -8,8 +8,8 @@ export class LoginPage extends BasePage {
   userEmailInput = this.page.locator('#username');
   userPasswordInput = this.page.locator('#password');
   loginButton = this.page.getByRole('button', { name: 'Login' });
-  welcomeText = this.page.locator('[class="woocommerce-MyAccount-content"]');
-  loginError = this.page.locator('[class="woocommerce-error"]');
+  welcomeText = this.page.locator('.woocommerce-MyAccount-content');
+  loginError = this.page.locator('.woocommerce-error');
 
   constructor(page: Page) {
     super(page);
