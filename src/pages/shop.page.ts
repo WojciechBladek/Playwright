@@ -7,10 +7,10 @@ export class ShopPage extends BasePage {
   url = '/shop/';
   cartPage = new CartPage(this.page);
 
-  myCartButton = this.page.locator('[class="top-cart"]');
+  myCartButton = this.page.locator('.top-cart');
   productsList = this.page
     .getByRole('listitem')
-    .locator('[class="woocommerce-loop-product__title"]');
+    .locator('.woocommerce-loop-product__title');
 
   constructor(page: Page) {
     super(page);

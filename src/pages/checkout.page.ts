@@ -18,7 +18,7 @@ export class CheckoutPage extends BasePage {
     .getByRole('combobox');
 
   placeOrderButton = this.page.locator('#place_order');
-  errorMessage = this.page.locator('[class="woocommerce-error"]');
+  errorMessage = this.page.locator('.woocommerce-error');
 
   constructor(page: Page) {
     super(page);

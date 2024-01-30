@@ -9,8 +9,8 @@ export class RegisterPage extends BasePage {
   userPasswordInput = this.page.locator('#reg_password');
   registerButton = this.page.getByRole('button', { name: 'Register' });
 
-  welcomeText = this.page.locator('[class="woocommerce-MyAccount-content"]');
-  emailErrorText = this.page.locator('[class="woocommerce-error"]');
+  welcomeText = this.page.locator('.woocommerce-MyAccount-content');
+  emailErrorText = this.page.locator('.woocommerce-error');
 
   constructor(page: Page) {
     super(page);
