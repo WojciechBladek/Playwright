@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 export class BasePage {
   url = '';
@@ -15,5 +15,9 @@ export class BasePage {
 
   async waitForPageToLoadUrl(): Promise<void> {
     await this.page.waitForURL(this.url);
+  }
+
+  getByClass(className: string): Locator {
+    return this.page.locator(`[class="${className}"]`);
   }
 }
